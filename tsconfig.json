@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "es2015", "es2016", "es2017"],
+    "target": "es2017",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "preserveSymlinks": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "paths": {
+      "@upload-io/vue-uploader": ["./"],
+      "@upload-io/vue-uploader/*": ["./*"]
+    }
+  },
+  "include": ["./**/*"],
+  "exclude": ["./node_modules/**/*"]
+}
