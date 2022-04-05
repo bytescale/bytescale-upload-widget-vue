@@ -19,20 +19,27 @@ export default defineComponent({
     width: {type: String, required: false},
   },
   computed: {
-    widthOrDefault() {
+    widthOrDefault(): string {
       return this.width ?? "600px"
     },
-    heightOrDefault() {
+    heightOrDefault(): string {
       return this.height ?? "375px"
     }
   },
   mounted() {
+    if (this.uploader === undefined) {
+      throw new Error("[vue-uploader] You must provide the 'uploader' property to the 'UploadDropzone' component.");
+    }
+    if (!(this.uploader instanceof Uploader)) {
+      throw new Error("[vue-uploader] Property 'uploader' on component 'UploadDropzone' must be of type 'Uploader', which is exported by the package 'uploader'.");
+    }
+
     const onUpdateParams: UploaderOptions = this.onUpdate === undefined ? {} : { onUpdate: this.onUpdate };
     this.uploader
       .open({
         ...this.options,
         ...onUpdateParams,
-        container: this.$refs.container,
+        container: this.$refs.container as HTMLElement,
         layout: "inline"
       })
       .then(

@@ -1,17 +1,17 @@
 <template>
   <h1>vue-uploader example</h1>
   <button @click="uploadFile">Upload a file...</button>
-  <UploadDropzone />
+  <UploadDropzone :uploader="uploader" :options="options" :on-update="onDropzoneUpdate" />
 </template>
 
 <script lang="ts">
 import { uploadFileMethod } from "@upload-io/vue-uploader/UploadFileMethod";
-import { Uploader, UploaderOptions } from "uploader";
-import { UploadDropzone } from "@upload-io/vue-uploader";
+import { Uploader, UploaderOptions, UploaderResult } from "uploader";
+import UploadDropzone from "@upload-io/vue-uploader/UploadDropzone.vue";
 
 const uploader = new Uploader({ apiKey: "free" });
 const options: UploaderOptions = {
-  multi: false
+  multi: true
 }
 
 export default {
@@ -19,11 +19,17 @@ export default {
   components: {
     UploadDropzone
   },
+  data() {
+    return {
+      uploader,
+      options
+    }
+  },
   methods: {
     uploadFile: uploadFileMethod({
       uploader,
       options,
-      onComplete: (files) => {
+      onComplete: (files: UploaderResult[]): void => {
         if (files.length === 0) {
           console.log('No files selected.')
         } else {
@@ -31,7 +37,15 @@ export default {
           console.log(files.map(f => f.fileUrl));
         }
       }
-    })
+    }),
+    onDropzoneUpdate: (files: UploaderResult[]): void => {
+      if (files.length === 0) {
+        console.log('No files selected in dropzone.')
+      } else {
+        console.log('Files uploaded in dropzone:');
+        console.log(files.map(f => f.fileUrl));
+      }
+    }
   }
 }
 </script>

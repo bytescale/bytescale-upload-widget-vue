@@ -12,6 +12,7 @@ module.exports = {
     publicPath: "/",
     filename: `index.js`
   },
+  externals: [],
   cache: true,
   mode: "development",
   entry: [`webpack-dev-server/client?http://localhost:${port}/`, "./src/dev/index.ts"],
