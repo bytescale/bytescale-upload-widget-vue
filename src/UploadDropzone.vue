@@ -1,7 +1,8 @@
 <template>
-  <div ref="container"
-       :style="{ position: 'relative', width: '100%', maxWidth: widthOrDefault, height: heightOrDefault }">
-  </div>
+  <div
+    ref="container"
+    :style="{ position: 'relative', width: '100%', maxWidth: widthOrDefault, height: heightOrDefault }"
+  ></div>
 </template>
 
 <script lang="ts">
@@ -9,21 +10,21 @@ import { Uploader, UploaderOptions, UploaderResult } from "uploader";
 import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
-  name: 'UploadDropzone',
+  name: "UploadDropzone",
   props: {
-    uploader: {type: Uploader, required: true},
-    options: {type: Object as PropType<UploaderOptions | undefined>, required: false},
-    onComplete: {type: Function as PropType<((files: UploaderResult[]) => void) | undefined>, required: false},
-    onUpdate: {type: Function as (PropType<(files: UploaderResult[]) => void> | undefined), required: false},
-    height: {type: String, required: false},
-    width: {type: String, required: false},
+    uploader: { type: Uploader, required: true },
+    options: { type: Object as PropType<UploaderOptions | undefined>, required: false },
+    onComplete: { type: Function as PropType<((files: UploaderResult[]) => void) | undefined>, required: false },
+    onUpdate: { type: Function as PropType<(files: UploaderResult[]) => void> | undefined, required: false },
+    height: { type: String, required: false },
+    width: { type: String, required: false }
   },
   computed: {
     widthOrDefault(): string {
-      return this.width ?? "600px"
+      return this.width ?? "600px";
     },
     heightOrDefault(): string {
-      return this.height ?? "375px"
+      return this.height ?? "375px";
     }
   },
   mounted() {
@@ -31,7 +32,9 @@ export default defineComponent({
       throw new Error("[vue-uploader] You must provide the 'uploader' property to the 'UploadDropzone' component.");
     }
     if (!(this.uploader instanceof Uploader)) {
-      throw new Error("[vue-uploader] Property 'uploader' on component 'UploadDropzone' must be of type 'Uploader', which is exported by the package 'uploader'.");
+      throw new Error(
+        "[vue-uploader] Property 'uploader' on component 'UploadDropzone' must be of type 'Uploader', which is exported by the package 'uploader'."
+      );
     }
 
     const onUpdateParams: UploaderOptions = this.onUpdate === undefined ? {} : { onUpdate: this.onUpdate };
@@ -51,5 +54,5 @@ export default defineComponent({
         error => console.error("Uploader error.", error)
       );
   }
-})
+});
 </script>

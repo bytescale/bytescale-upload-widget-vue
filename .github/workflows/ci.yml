@@ -25,6 +25,9 @@ jobs:
       - name: "Install repository dependencies"
         run: npm ci
 
+      - name: "Acceptance tests (start web server)"
+        run: npm run start &
+
       - name: "Check code style"
         run: find . -type f \( -iname \*.js -o -iname \*.jsx -o -iname \*.ts -o -iname \*.tsx \) | grep -v node_modules | grep -v /dist/ | xargs ./node_modules/.bin/prettier --check
 
