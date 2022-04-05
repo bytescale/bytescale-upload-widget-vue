@@ -48,24 +48,43 @@
 npm install @upload-io/vue-uploader
 ```
 
-```javascript
-import { Uploader } from "uploader";
-import { UploadButton } from "@upload-io/vue-uploader";
+```html
+<template>
+  <button @click="uploadFile">Upload a file...</button>
+</template>
 
+<script>
+import { Uploader } from "uploader";
+import { uploadFileMethod } from "@upload-io/vue-uploader";
+
+// Create one instance per app. (Get API keys from Upload.io)
 const uploader = new Uploader({
-  // Get production API keys from Upload.io
   apiKey: "free"
 });
 
-<UploadButton uploader={uploader}
-              options={{multi: true}}
-              onComplete={files => console.log(files)}>
-  {({onClick}) =>
-    <button onClick={onClick}>
-      Upload a file...
-    </button>
+// See "customization" below.
+const options = {
+  multi: true
+};
+
+export default {
+  name: "App",
+  methods: {
+    uploadFile: uploadFileMethod({
+      uploader,
+      options,
+      onComplete: (files) => {
+        if (files.length === 0) {
+          console.log("No files selected.");
+        } else {
+          console.log("Files uploaded:");
+          console.log(files.map(f => f.fileUrl));
+        }
+      }
+    })
   }
-</UploadButton>
+};
+</script>
 ```
 
 # Installation
@@ -88,49 +107,101 @@ Or via a `<script>` tag:
 <script src="https://js.upload.io/vue-uploader/v1"></script>
 ```
 
-## Initialize
+## Usage
 
-Initialize once at the start of your application:
+`@upload-io/vue-uploader` provides two options:
 
-```javascript
+### Option 1) Creating a File Upload Button
+
+Create a file upload button using the `uploadFileMethod` helper:
+
+```html
+<template>
+  <button @click="uploadFile">Upload a file...</button>
+</template>
+
+<script>
+  import { Uploader } from "uploader";
+  import { uploadFileMethod } from "@upload-io/vue-uploader";
+
+  // Create one instance per app. (Get API keys from Upload.io)
+  const uploader = new Uploader({
+    apiKey: "free"
+  });
+
+  // See "customization" below.
+  const options = {
+    multi: true
+  };
+
+  export default {
+    name: "App",
+    methods: {
+      uploadFile: uploadFileMethod({
+        uploader,
+        options,
+        onComplete: (files) => {
+          if (files.length === 0) {
+            console.log("No files selected.");
+          } else {
+            console.log("Files uploaded:");
+            console.log(files.map(f => f.fileUrl));
+          }
+        }
+      })
+    }
+  };
+</script>
+```
+
+### Option 2) Creating a Dropzone
+
+Create a file upload dropzone using the `UploadDropzone` component:
+
+```html
+<template>
+  <UploadDropzone :uploader="uploader"
+                  :options="options"
+                  :on-update="onFileUploaded"
+                  width="600px"
+                  height="375px" />
+</template>
+
+<script>
 import { Uploader } from "uploader";
-
-// Get production API keys from Upload.io
-const uploader = new Uploader({
-  apiKey: "free"
-});
-```
-
-## Choose a Component
-
-`@upload-io/vue-uploader` provides two UI components:
-
-### (1) File Upload Button
-
-```javascript
-import { UploadButton } from "@upload-io/vue-uploader";
-
-<UploadButton uploader={uploader}
-              options={{multi: true}}
-              onComplete={files => console.log(files)}>
-  {({onClick}) =>
-    <button onClick={onClick}>
-      Upload a file...
-    </button>
-  }
-</UploadButton>
-```
-
-### (2) Dropzone
-
-```javascript
 import { UploadDropzone } from "@upload-io/vue-uploader";
 
-<UploadDropzone uploader={uploader}
-                options={{multi: true}}
-                onUpdate={files => console.log(files)}
-                width="600px"
-                height="375px" />
+// One instance per app.
+const uploader = new Uploader({ apiKey: "free" });
+
+// See "customization" below.
+const options = {
+  multi: true
+};
+
+export default {
+  name: "App",
+  components: {
+    UploadDropzone
+  },
+  data() {
+    return {
+      uploader,
+      options
+    };
+  },
+  methods: {
+    onFileUploaded: (files) => {
+      if (files.length === 0) {
+        console.log("No files selected.");
+      } else {
+        console.log("Files uploaded:");
+        console.log(files.map(f => f.fileUrl));
+      }
+    }
+  }
+};
+</script>
 ```
 
 ## The Result
