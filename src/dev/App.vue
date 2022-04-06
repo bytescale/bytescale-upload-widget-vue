@@ -7,9 +7,10 @@
 </template>
 
 <script lang="ts">
-import { uploadFileMethod } from "@upload-io/vue-uploader/UploadFileMethod";
-import { Uploader, UploaderOptions, UploaderResult } from "uploader";
+import { openUploader } from "@upload-io/vue-uploader/OpenUploader";
+import { PreventableEvent } from "@upload-io/vue-uploader/PreventableEvent";
 import UploadDropzone from "@upload-io/vue-uploader/UploadDropzone.vue";
+import { Uploader, UploaderOptions, UploaderResult } from "uploader";
 
 const uploader = new Uploader({ apiKey: "free" });
 const options: UploaderOptions = {
@@ -28,18 +29,21 @@ export default {
     };
   },
   methods: {
-    uploadFile: uploadFileMethod({
-      uploader,
-      options,
-      onComplete: (files: UploaderResult[]): void => {
-        if (files.length === 0) {
-          console.log("No files selected.");
-        } else {
-          console.log("Files uploaded:");
-          console.log(files.map(f => f.fileUrl));
+    uploadFile(event: PreventableEvent) {
+      openUploader({
+        event,
+        uploader,
+        options,
+        onComplete: (files: UploaderResult[]): void => {
+          if (files.length === 0) {
+            console.log("No files selected.");
+          } else {
+            console.log("Files uploaded:");
+            console.log(files.map(f => f.fileUrl));
+          }
         }
-      }
-    }),
+      })
+    },
     onDropzoneUpdate: (files: UploaderResult[]): void => {
       if (files.length === 0) {
         console.log("No files selected in dropzone.");

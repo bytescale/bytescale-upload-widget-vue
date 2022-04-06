@@ -55,7 +55,7 @@ npm install @upload-io/vue-uploader
 
 <script>
 import { Uploader } from "uploader";
-import { uploadFileMethod } from "@upload-io/vue-uploader";
+import { openUploader } from "@upload-io/vue-uploader";
 
 // Create one instance per app. (Get API keys from Upload.io)
 const uploader = new Uploader({
@@ -70,18 +70,21 @@ const options = {
 export default {
   name: "App",
   methods: {
-    uploadFile: uploadFileMethod({
-      uploader,
-      options,
-      onComplete: (files) => {
-        if (files.length === 0) {
-          console.log("No files selected.");
-        } else {
-          console.log("Files uploaded:");
-          console.log(files.map(f => f.fileUrl));
+    uploadFile(event) {
+      openUploader({
+        event,
+        uploader,
+        options,
+        onComplete: (files) => {
+          if (files.length === 0) {
+            console.log("No files selected.");
+          } else {
+            console.log("Files uploaded:");
+            console.log(files.map(f => f.fileUrl));
+          }
         }
-      }
-    })
+      })
+    }
   }
 };
 </script>
@@ -113,7 +116,7 @@ Or via a `<script>` tag:
 
 ### Option 1) Creating a File Upload Button
 
-Create a file upload button using the `uploadFileMethod` helper:
+Create a file upload button using the `openUploader` helper:
 
 ```html
 <template>
@@ -121,23 +124,25 @@ Create a file upload button using the `uploadFileMethod` helper:
 </template>
 
 <script>
-  import { Uploader } from "uploader";
-  import { uploadFileMethod } from "@upload-io/vue-uploader";
+import { Uploader } from "uploader";
+import { openUploader } from "@upload-io/vue-uploader";
 
-  // Create one instance per app. (Get API keys from Upload.io)
-  const uploader = new Uploader({
-    apiKey: "free"
-  });
+// Create one instance per app. (Get API keys from Upload.io)
+const uploader = new Uploader({
+  apiKey: "free"
+});
 
-  // See "customization" below.
-  const options = {
-    multi: true
-  };
+// See "customization" below.
+const options = {
+  multi: true
+};
 
-  export default {
-    name: "App",
-    methods: {
-      uploadFile: uploadFileMethod({
+export default {
+  name: "App",
+  methods: {
+    uploadFile(event) {
+      openUploader({
+        event,
         uploader,
         options,
         onComplete: (files) => {
@@ -150,7 +155,8 @@ Create a file upload button using the `uploadFileMethod` helper:
         }
       })
     }
-  };
+  }
+};
 </script>
 ```
 
