@@ -4,27 +4,27 @@
   </a>
 </h1>
 
-<p align="center"><b>Vue File Upload Component for <a href="https://upload.io/">Upload.io</a></b><br/> (Vue Wrapper for <a href="https://upload.io/uploader">Uploader</a>)</p>
+<p align="center"><b>Vue File Upload Component</b><br/> (Vue Wrapper for <a href="https://upload.io/uploader">Uploader</a>)</p>
 <br/>
 <p align="center">
   <a href="https://github.com/upload-io/vue-uploader/">
     <img src="https://img.shields.io/badge/gzipped-29%20kb-4ba0f6" />
   </a>
 
-  <a href="https://www.npmjs.com/package/vue-uploader">
-    <img src="https://img.shields.io/badge/vue--uploader-npm-4ba0f6" />
+  <a href="https://www.npmjs.com/package/@upload-io/vue-uploader">
+    <img src="https://img.shields.io/badge/@upload--io/vue--uploader-npm-4ba0f6" />
   </a>
 
   <a href="https://github.com/upload-io/vue-uploader/actions/workflows/ci.yml">
     <img src="https://img.shields.io/badge/build-passing-4ba0f6" />
   </a>
 
-  <a href="https://www.npmjs.com/package/vue-uploader">
+  <a href="https://www.npmjs.com/package/@upload-io/vue-uploader">
     <img src="https://img.shields.io/npm/dt/vue-uploader?color=%234ba0f6" />
   </a>
   <br/>
 
-  <a href="https://www.npmjs.com/package/vue-uploader">
+  <a href="https://www.npmjs.com/package/@upload-io/vue-uploader">
     <img src="https://img.shields.io/badge/TypeScript-included-4ba0f6" />
   </a>
 
