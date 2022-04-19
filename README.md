@@ -119,7 +119,7 @@ Or via a `<script>` tag:
 
 ## Usage
 
-Vue Uploader comes with two options:
+Vue Uploader provides two options:
 
 ### Option 1) File Upload Button
 
