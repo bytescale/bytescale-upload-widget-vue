@@ -219,7 +219,7 @@ export default {
 
 ## The Result
 
-The callbacks receives a `Array<UploaderResult>`:
+The callbacks receive a `Array<UploaderResult>`:
 
 ```javascript
 {
