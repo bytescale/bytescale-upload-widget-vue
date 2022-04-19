@@ -22,7 +22,7 @@
   </a>
 
   <a href="https://www.npmjs.com/package/@upload-io/vue-uploader">
-    <img src="https://img.shields.io/npm/dt/vue-uploader?color=%234ba0f6" />
+    <img src="https://img.shields.io/npm/dt/@upload-io/vue-uploader?color=%234ba0f6" />
   </a>
   <br/>
 
@@ -31,7 +31,7 @@
   </a>
 
   <a href="https://github.com/upload-io/vue-uploader/actions/workflows/ci.yml">
-    <img src="https://img.shields.io/npms-io/maintenance-score/vue-uploader?color=4ba0f6" />
+    <img src="https://img.shields.io/npms-io/maintenance-score/@upload-io/vue-uploader?color=4ba0f6" />
   </a>
 
   <a target="_blank" href="https://twitter.com/intent/tweet?text=I%20just%20found%20Uploader%20%26%20Upload.io%20%E2%80%94%20they%20make%20it%20super%20easy%20to%20upload%20files%20%E2%80%94%20installs%20with%207%20lines%20of%20code%20https%3A%2F%2Fgithub.com%2Fupload-io%2Fuploader&hashtags=javascript,opensource,js,webdev,developers&via=UploadJS">
