@@ -1,11 +1,13 @@
 <h1 align="center">
   <a href="https://upload.io/uploader">
-    <img alt="Uploader" width="276" height="80" src="https://raw.githubusercontent.com/upload-io/assets/master/logo-uploader.svg">
+    <img alt="Vue Uploader" width="267" height="106" src="https://raw.githubusercontent.com/upload-io/vue-uploader/main/.github/assets/logo.svg">
   </a>
 </h1>
 
-<p align="center"><b>Vue File Upload Component</b><br/> (Vue Wrapper for <a href="https://upload.io/uploader">Uploader</a>)</p>
-<br/>
+<p align="center"><b>Vue File Upload Widget</b><br/> (With Integrated Cloud Storage)</p>
+
+<p align="center">Vue Wrapper for <a href="https://upload.io/uploader">Uploader</a> • Developed by <a href="https://upload.io/">Upload.io</a><br/><br/></p>
+
 <p align="center">
   <a href="https://github.com/upload-io/vue-uploader/">
     <img src="https://img.shields.io/badge/gzipped-29%20kb-4ba0f6" />
@@ -39,10 +41,15 @@
 </p>
 
 <h1 align="center">
-  Quick Start — <a href="https://codepen.io/upload-js/pen/yLpvYew?editors=1010">Try on CodePen</a>
+  Quick Start —
+  <a href="https://codepen.io/upload-js/pen/yLpvYew?editors=1010">
+    Try on CodePen
+  </a>
 </h1>
 
-<p align="center">To create a file upload button:</p>
+<p align="center"><a href="https://upload.io/uploader"><img alt="Upload Widget Demo" width="100%" src="https://raw.githubusercontent.com/upload-io/vue-uploader/main/.github/assets/demo.webp"></a></p>
+
+<p align="center">To implement the above widget:</p>
 
 ```shell
 npm install @upload-io/vue-uploader
@@ -112,9 +119,9 @@ Or via a `<script>` tag:
 
 ## Usage
 
-`@upload-io/vue-uploader` provides two options:
+Vue Uploader comes with two options:
 
-### Option 1) Creating a File Upload Button
+### Option 1) File Upload Button
 
 Create a file upload button using the `openUploader` helper:
 
@@ -160,7 +167,7 @@ export default {
 </script>
 ```
 
-### Option 2) Creating a Dropzone
+### Option 2) Dropzone
 
 Create a file upload dropzone using the `UploadDropzone` component:
 
@@ -212,7 +219,7 @@ export default {
 
 ## The Result
 
-The `onComplete` callback receives a `Array<UploaderResult>`:
+The callbacks receives a `Array<UploaderResult>`:
 
 ```javascript
 {
@@ -242,9 +249,23 @@ The `onComplete` callback receives a `Array<UploaderResult>`:
 
 ## Full Documentation
 
-`@upload-io/vue-uploader` is a Vue wrapper for `uploader`.
+Vue Uploader is a wrapper for Uploader — see the **[Uploader Docs](https://github.com/upload-io/uploader#%EF%B8%8F-configuration)** 📖
 
-Please see: **[Uploader Docs](https://github.com/upload-io/uploader#%EF%B8%8F-configuration)**.
+## Where are my files stored?
+
+Uploader uses [Upload.io](https://upload.io) as a storage and file hosting backend.
+
+Upload.io benefits developers with:
+
+- Zero Setup (Start uploading in the next few minutes!)
+- Pre-Integrated Storage (All you need is an Upload API key)
+- Fast File Hosting (Worldwide CDN, 300 Nodes)
+- Powerful Rules Engine (Rate Limiting, Traffic Limiting, IP Blacklisting, Expiring Links, etc)
+- File Transformations (Image Resizing, Cropping, Optimization, etc)
+
+### Can I bring my own file storage?
+
+Uploader's USP is to provide developers with the least amount of work possible, while remaining customizable. As such, Uploader will always be closely integrated with the Upload.io platform, and there are currently no plans to support custom backends. You may, however, sync files from your Upload.io account to a custom storage target.
 
 ## Contribute
 
