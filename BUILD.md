@@ -8,8 +8,8 @@ This repository contains a hot-reloading sandbox for developing the `@upload-io/
 
 | Package | Version  |
 | ------- | -------- |
-| Node    | v12.22.0 |
-| NPM     | v6.14.11 |
+| Node    | v18.12.1 |
+| NPM     | v8.19.2  |
 
 ## How To Build & Run
 
@@ -20,13 +20,19 @@ git clone git@github.com:upload-io/vue-uploader.git
 cd vue-uploader
 ```
 
-### 2. Install Dependencies
+### 2. Setup Environment
+
+```
+export NODE_OPTIONS=--openssl-legacy-provider
+```
+
+### 3. Install Dependencies
 
 ```shell
 npm install
 ```
 
-### 3. Run The Sandbox
+### 4. Run The Sandbox
 
 ```shell
 npm start
