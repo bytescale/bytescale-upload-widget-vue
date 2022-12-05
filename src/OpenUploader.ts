@@ -1,4 +1,4 @@
-import { Uploader, UploaderOptions, UploaderResult } from "uploader";
+import { UploaderInterface, UploaderOptions, UploaderResult } from "uploader";
 import { PreventableEvent } from "@upload-io/vue-uploader/PreventableEvent";
 
 export function openUploader({
@@ -10,7 +10,7 @@ export function openUploader({
   event?: PreventableEvent;
   onComplete?: (files: UploaderResult[]) => void;
   options?: UploaderOptions;
-  uploader: Uploader;
+  uploader: UploaderInterface;
 }): void {
   if (event !== undefined) {
     event.preventDefault();

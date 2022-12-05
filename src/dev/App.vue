@@ -12,7 +12,7 @@ import { PreventableEvent } from "@upload-io/vue-uploader/PreventableEvent";
 import UploadDropzone from "@upload-io/vue-uploader/UploadDropzone.vue";
 import { Uploader, UploaderOptions, UploaderResult } from "uploader";
 
-const uploader = new Uploader({ apiKey: "free" });
+const uploader = Uploader({ apiKey: "free" });
 const options: UploaderOptions = {
   multi: true
 };

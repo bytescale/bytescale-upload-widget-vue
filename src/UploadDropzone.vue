@@ -6,13 +6,13 @@
 </template>
 
 <script lang="ts">
-import { Uploader, UploaderOptions, UploaderResult } from "uploader";
+import { UploaderInterface, UploaderOptions, UploaderResult } from "uploader";
 import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
   name: "UploadDropzone",
   props: {
-    uploader: { type: Uploader, required: true },
+    uploader: { type: Object as PropType<UploaderInterface>, required: true },
     options: { type: Object as PropType<UploaderOptions | undefined>, required: false },
     onComplete: { type: Function as PropType<((files: UploaderResult[]) => void) | undefined>, required: false },
     onUpdate: { type: Function as PropType<(files: UploaderResult[]) => void> | undefined, required: false },
@@ -30,11 +30,6 @@ export default defineComponent({
   mounted() {
     if (this.uploader === undefined) {
       throw new Error("[vue-uploader] You must provide the 'uploader' property to the 'UploadDropzone' component.");
-    }
-    if (!(this.uploader instanceof Uploader)) {
-      throw new Error(
-        "[vue-uploader] Property 'uploader' on component 'UploadDropzone' must be of type 'Uploader', which is exported by the package 'uploader'."
-      );
     }
 
     const onUpdateParams: UploaderOptions = this.onUpdate === undefined ? {} : { onUpdate: this.onUpdate };

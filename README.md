@@ -114,7 +114,7 @@ yarn add @upload-io/vue-uploader
 Or via a `<script>` tag:
 
 ```html
-<script src="https://js.upload.io/vue-uploader/v1"></script>
+<script src="https://js.upload.io/vue-uploader/v2"></script>
 ```
 
 ## Usage
@@ -223,24 +223,26 @@ The callbacks receive a `Array<UploaderResult>`:
 
 ```javascript
 {
-  fileUrl: "https://upcdn.io/FW25...",          // The URL to use when serving this file.
+  fileUrl: "https://upcdn.io/FW25...",   // URL to use when serving this file.
+  filePath: "/uploads/example.jpg",      // File path (we recommend saving this to your database).
 
-  editedFile: undefined,                        // The edited file (if present). Same as below.
+  editedFile: undefined,                 // Edited file (for image crops). Same structure as below.
 
   originalFile: {
-    accountId: "FW251aX",                       // The Upload.io account that owns the file.
-    file: { ... },                              // DOM file object (from the <input> element).
-    fileId: "FW251aXa9ku...",                   // The uploaded file ID.
-    fileUrl: "https://upcdn.io/FW25...",        // The uploaded file URL.
-    fileSize: 12345,                            // File size in bytes.
-    mime: "image/jpeg",                         // File MIME type.
-    suggestedOptimization: {
-      transformationUrl: "https://upcdn.io/..", // The suggested URL for serving this file.
-      transformationSlug: "thumbnail"           // Append to 'fileUrl' to produce the above URL.
+    fileUrl: "https://upcdn.io/FW25...", // Uploaded file URL.
+    filePath: "/uploads/example.jpg",    // Uploaded file path (relative to your raw file directory).
+    accountId: "FW251aX",                // Upload.io account the file was uploaded to.
+    originalFileName: "example.jpg",     // Original file name from the user's machine.
+    file: { ... },                       // Original DOM file object from the <input> element.
+    size: 12345,                         // File size in bytes.
+    lastModified: 1663410542397,         // Epoch timestamp of when the file was uploaded or updated.
+    mime: "image/jpeg",                  // File MIME type.
+    metadata: {
+      ...                                // User-provided JSON object.
     },
-    tags: [                                     // Tags manually & auto-assigned to this file.
-      { name: "tag1", searchable: true },
-      { name: "tag2", searchable: true },
+    tags: [
+      "tag1",                            // User-provided & auto-generated tags.
+      "tag2",
       ...
     ]
   }
