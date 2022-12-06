@@ -130,40 +130,41 @@ Create a file upload button using the `openUploader` helper:
   <button @click="uploadFile">Upload a file...</button>
 </template>
 
-<script>
-import { Uploader } from "uploader";
-import { openUploader } from "@upload-io/vue-uploader";
+<script lang="ts">
+  import { Uploader } from "uploader";
+  import { openUploader } from "@upload-io/vue-uploader";
+  import type { UploaderOptions, UploaderResult } from "uploader";
+  import type { PreventableEvent } from "@upload-io/vue-uploader";
 
-// Create one instance per app. (Get API keys from Upload.io)
-const uploader = Uploader({
-  apiKey: "free"
-});
+  // Create one instance per app. (Get API keys from Upload.io)
+  const uploader = Uploader({
+    apiKey: "free"
+  });
 
-// See "customization" below.
-const options = {
-  multi: true
-};
+  // See "customization" below.
+  const options: UploaderOptions = {
+    multi: true
+  };
 
-export default {
-  name: "App",
-  methods: {
-    uploadFile(event) {
-      openUploader({
-        event,
-        uploader,
-        options,
-        onComplete: (files) => {
-          if (files.length === 0) {
-            console.log("No files selected.");
-          } else {
-            console.log("Files uploaded:");
-            console.log(files.map(f => f.fileUrl));
+  export default {
+    name: "App",
+    methods: {
+      uploadFile(event: PreventableEvent) {
+        openUploader({
+          event,
+          uploader,
+          options,
+          onComplete: (files: UploaderResult[]) => {
+            if (files.length === 0) {
+              alert("No files selected.");
+            } else {
+              alert(files.map(f => f.fileUrl).join("\n"));
+            }
           }
-        }
-      })
+        })
+      }
     }
-  }
-};
+  };
 </script>
 ```
 
@@ -180,7 +181,7 @@ Create a file upload dropzone using the `UploadDropzone` component:
                   height="375px" />
 </template>
 
-<script>
+<script lang="ts">
 import { Uploader } from "uploader";
 import { UploadDropzone } from "@upload-io/vue-uploader";
 import type { UploaderOptions, UploaderResult } from "uploader";
