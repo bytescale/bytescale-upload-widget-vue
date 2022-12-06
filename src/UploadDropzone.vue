@@ -1,7 +1,7 @@
 <template>
   <div
     ref="container"
-    :style="{ position: 'relative', width: '100%', maxWidth: widthOrDefault, height: heightOrDefault }"
+    :style="{ position: 'relative', width: '100%', minWidth: '280px', maxWidth: widthOrDefault, height: heightOrDefault }"
   ></div>
 </template>
 
