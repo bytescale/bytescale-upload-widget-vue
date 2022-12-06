@@ -1,13 +1,10 @@
 <h1 align="center">
   <a href="https://upload.io/uploader">
-    <img alt="Vue Uploader" width="267" height="106" src="https://raw.githubusercontent.com/upload-io/vue-uploader/main/.github/assets/logo.svg">
+    <img alt="Vue Uploader" width="264" height="106" src="https://raw.githubusercontent.com/upload-io/vue-uploader/main/.github/assets/logo.svg">
   </a>
 </h1>
-
 <p align="center"><b>Vue File Upload Widget</b><br/> (With Integrated Cloud Storage)</p>
-
-<p align="center">Vue Wrapper for <a href="https://upload.io/uploader">Uploader</a> • Developed by <a href="https://upload.io/">Upload.io</a><br/><br/></p>
-
+<br/>
 <p align="center">
   <a href="https://github.com/upload-io/vue-uploader/">
     <img src="https://img.shields.io/badge/gzipped-29%20kb-4ba0f6" />
@@ -39,9 +36,8 @@
   </a>
 
 </p>
-
 <h1 align="center">
-  Quick Start —
+  Get Started —
   <a href="https://codepen.io/upload-js/pen/yLpvYew?editors=1010">
     Try on CodePen
   </a>
@@ -49,53 +45,19 @@
 
 <p align="center"><a href="https://upload.io/uploader"><img alt="Upload Widget Demo" width="100%" src="https://raw.githubusercontent.com/upload-io/vue-uploader/main/.github/assets/demo.webp"></a></p>
 
-<p align="center">To implement the above widget:</p>
+<p align="center">100% Serverless File Upload Widget  <br /> Powered by <a href="https://upload.io/">Upload.io</a><br/><br/></p>
 
-```shell
-npm install @upload-io/vue-uploader
-```
+<hr/>
 
-```html
-<template>
-  <button @click="uploadFile">Upload a file...</button>
-</template>
+<p align="center"><a href="https://upload.io/dmca" rel="nofollow">DMCA Compliant</a> • <a href="https://upload.io/dpa" rel="nofollow">GDPR Compliant</a> • <a href="https://upload.io/sla" rel="nofollow">99.9% Uptime SLA</a>
+  <br/>
+  <b>Supports:</b> Rate Limiting, Volume Limiting, File Size &amp; Type Limiting, JWT Auth, and more...
+  <br />
+</p>
 
-<script>
-import { Uploader } from "uploader";
-import { openUploader } from "@upload-io/vue-uploader";
-
-// Create one instance per app. (Get API keys from Upload.io)
-const uploader = Uploader({
-  apiKey: "free"
-});
-
-// See "customization" below.
-const options = {
-  multi: true
-};
-
-export default {
-  name: "App",
-  methods: {
-    uploadFile(event) {
-      openUploader({
-        event,
-        uploader,
-        options,
-        onComplete: (files) => {
-          if (files.length === 0) {
-            console.log("No files selected.");
-          } else {
-            console.log("Files uploaded:");
-            console.log(files.map(f => f.fileUrl));
-          }
-        }
-      })
-    }
-  }
-};
-</script>
-```
+<hr/>
+<br />
+<br />
 
 # Installation
 
