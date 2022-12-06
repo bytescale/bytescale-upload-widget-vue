@@ -16,7 +16,8 @@
     "url": "https://github.com/upload-io/vue-uploader/issues"
   },
   "files": [
-    "*"
+    "*",
+    "/dist/*"
   ],
   "keywords": [
     "vue",
@@ -74,7 +75,7 @@
     "vue": ">=3.0.0"
   },
   "dependencies": {
-    "uploader": "^2.5.0"
+    "uploader": "^2.6.0"
   },
   "devDependencies": {
     "@babel/cli": "7.17.6",
