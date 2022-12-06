@@ -130,7 +130,7 @@ Create a file upload button using the `openUploader` helper:
 </script>
 ```
 
-### Option 2) Dropzone
+### Option 2) Dropzone — [Try on CodePen](https://codepen.io/upload-js/pen/RwJvpKG?editors=1000)
 
 Create a file upload dropzone using the `UploadDropzone` component:
 
@@ -168,7 +168,7 @@ export default {
     };
   },
   methods: {
-    onFileUploaded: (files: UploaderResult[]) => {
+    onFileUploaded(files: UploaderResult[]) {
       if (files.length === 0) {
         alert("No files selected.");
       } else {
