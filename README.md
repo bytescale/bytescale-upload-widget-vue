@@ -65,7 +65,7 @@ import { Uploader } from "uploader";
 import { openUploader } from "@upload-io/vue-uploader";
 
 // Create one instance per app. (Get API keys from Upload.io)
-const uploader = new Uploader({
+const uploader = Uploader({
   apiKey: "free"
 });
 
@@ -135,7 +135,7 @@ import { Uploader } from "uploader";
 import { openUploader } from "@upload-io/vue-uploader";
 
 // Create one instance per app. (Get API keys from Upload.io)
-const uploader = new Uploader({
+const uploader = Uploader({
   apiKey: "free"
 });
 
@@ -185,7 +185,7 @@ import { Uploader } from "uploader";
 import { UploadDropzone } from "@upload-io/vue-uploader";
 
 // One instance per app.
-const uploader = new Uploader({ apiKey: "free" });
+const uploader = Uploader({ apiKey: "free" });
 
 // See "customization" below.
 const options = {
