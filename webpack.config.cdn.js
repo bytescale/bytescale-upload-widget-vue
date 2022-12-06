@@ -19,7 +19,14 @@ module.exports = {
     libraryTarget: "umd"
   },
   // Important: causes all dependencies to be bundled into one JS file.
-  externals: [],
+  externals: {
+    vue: {
+      root: "Vue",
+      commonjs: "vue",
+      commonjs2: "vue",
+      amd: "vue"
+    }
+  },
   resolve: {
     ...config.resolve,
     modules: [
