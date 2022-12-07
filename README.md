@@ -85,7 +85,7 @@ Vue Uploader provides two options:
 
 ### Option 1) File Upload Button — [Try on CodePen](https://codepen.io/upload-js/pen/yLpvYew?editors=1000)
 
-Create a file upload button using the `openUploader` helper:
+Create a file upload button using the `openUploadModal` helper:
 
 ```html
 <template>
@@ -94,8 +94,8 @@ Create a file upload button using the `openUploader` helper:
 
 <script lang="ts">
   import { Uploader } from "uploader";
-  import { openUploader } from "@upload-io/vue-uploader";
-  import type { UploaderOptions, UploaderResult } from "uploader";
+  import { openUploadModal } from "@upload-io/vue-uploader";
+  import type { UploadWidgetConfig, UploadWidgetResult } from "uploader";
   import type { PreventableEvent } from "@upload-io/vue-uploader";
 
   // Create one instance per app. (Get API keys from Upload.io)
@@ -104,7 +104,7 @@ Create a file upload button using the `openUploader` helper:
   });
 
   // See "customization" below.
-  const options: UploaderOptions = {
+  const options: UploadWidgetConfig = {
     multi: true
   };
 
@@ -112,11 +112,11 @@ Create a file upload button using the `openUploader` helper:
     name: "App",
     methods: {
       uploadFile(event: PreventableEvent) {
-        openUploader({
+        openUploadModal({
           event,
           uploader,
           options,
-          onComplete: (files: UploaderResult[]) => {
+          onComplete: (files: UploadWidgetResult[]) => {
             if (files.length === 0) {
               alert("No files selected.");
             } else {
@@ -146,13 +146,13 @@ Create a file upload dropzone using the `UploadDropzone` component:
 <script lang="ts">
 import { Uploader } from "uploader";
 import { UploadDropzone } from "@upload-io/vue-uploader";
-import type { UploaderOptions, UploaderResult } from "uploader";
+import type { UploadWidgetConfig, UploadWidgetResult } from "uploader";
 
 // One instance per app.
 const uploader = Uploader({ apiKey: "free" });
 
 // See "customization" below.
-const options: UploaderOptions = {
+const options: UploadWidgetConfig = {
   multi: true
 };
 
@@ -168,7 +168,7 @@ export default {
     };
   },
   methods: {
-    onFileUploaded(files: UploaderResult[]) {
+    onFileUploaded(files: UploadWidgetResult[]) {
       if (files.length === 0) {
         alert("No files selected.");
       } else {
@@ -182,7 +182,7 @@ export default {
 
 ## The Result
 
-The callbacks receive a `Array<UploaderResult>`:
+The callbacks receive a `Array<UploadWidgetResult>`:
 
 ```javascript
 {
