@@ -76,7 +76,7 @@ yarn add @upload-io/vue-uploader
 Or via a `<script>` tag:
 
 ```html
-<script src="https://js.upload.io/vue-uploader/v2"></script>
+<script src="https://js.upload.io/vue-uploader/v3"></script>
 ```
 
 ## Usage
