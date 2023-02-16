@@ -16,8 +16,8 @@
     "url": "https://github.com/upload-io/vue-uploader/issues"
   },
   "files": [
-    "/dist/*",
-    "/tests/*"
+    "/dist/**/*",
+    "/tests/**/*"
   ],
   "keywords": [
     "vue",
