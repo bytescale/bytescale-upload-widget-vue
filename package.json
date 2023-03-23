@@ -75,7 +75,7 @@
     "vue": ">=3.0.0"
   },
   "dependencies": {
-    "uploader": "^3.9.0"
+    "uploader": "^3.10.0"
   },
   "devDependencies": {
     "@babel/cli": "7.17.6",
@@ -90,7 +90,7 @@
     "@wdio/spec-reporter": "^7.19.1",
     "babel-loader": "8.2.3",
     "babel-plugin-transform-async-to-promises": "0.8.15",
-    "chromedriver": "^109.0.0",
+    "chromedriver": "^111.0.0",
     "enzyme": "3.11.0",
     "eslint": "7.32.0",
     "eslint-config-prettier": "6.15.0",
