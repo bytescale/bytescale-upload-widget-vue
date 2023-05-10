@@ -75,7 +75,7 @@
     "vue": ">=3.0.0"
   },
   "dependencies": {
-    "uploader": "^3.27.0"
+    "uploader": "^3.28.0"
   },
   "devDependencies": {
     "@babel/cli": "7.17.6",
