@@ -16,7 +16,7 @@ This repository contains a hot-reloading sandbox for developing the `@upload-io/
 ### 1. Clone
 
 ```shell
-git clone git@github.com:upload-io/vue-uploader.git
+git clone git@github.com:bytescale/vue-uploader.git
 cd vue-uploader
 ```
 

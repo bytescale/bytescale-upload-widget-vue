@@ -1,19 +1,19 @@
 {
   "name": "@upload-io/vue-uploader",
   "version": "3.35.0",
-  "author": "Upload <hello@upload.io> (https://upload.io)",
+  "author": "Bytescale <hello@bytescale.com> (https://www.bytescale.com)",
   "description": "Vue File Upload UI Widget — Lightweight & supports: drag and drop, multiple uploads, image cropping, customization & more 🚀 Comes with Cloud Storage 🌐",
   "license": "MIT",
   "main": "dist/main.js",
   "types": "dist/index.d.ts",
-  "homepage": "https://upload.io/uploader",
+  "homepage": "https://www.bytescale.com/docs/upload-widget/frameworks/vue",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/upload-io/vue-uploader.git"
+    "url": "git+https://github.com/bytescale/vue-uploader.git"
   },
   "bugs": {
-    "url": "https://github.com/upload-io/vue-uploader/issues"
+    "url": "https://github.com/bytescale/vue-uploader/issues"
   },
   "files": [
     "/dist/**/*",
@@ -53,7 +53,7 @@
     "publish:executeIfReleaseCommit": "bash -c 'COMMIT=$(git log -1 --pretty=%B) && [ \"${COMMIT:0:8}\" != \"Release \" ] || npm run publish:execute'",
     "publish:execute": "npm run publish:cdn && npm publish && npm run publish:createGitHubRelease",
     "publish:createGitHubRelease": "gh release create v$(node -p \"require('./package.json').version\")",
-    "publish:cdn": "npm run prepack:cdn && aws s3 cp --recursive --content-type application/javascript dist/ s3://upload-js-releases/vue-uploader/ && aws cloudfront create-invalidation --distribution-id EO4VJPLCDN8HY --paths '/vue-uploader/*'",
+    "publish:cdn": "npm run prepack:cdn && aws s3 cp --recursive --content-type application/javascript dist/ s3://upload-js-releases/vue-uploader/ && aws cloudfront create-invalidation --distribution-id EO4VJPLCDN8HY --paths '/vue-uploader/*' && aws cloudfront create-invalidation --distribution-id E250290WAJ43YY --paths '/vue-uploader/*'",
     "test": "npx wdio run tests/wdio.conf.ts --autoCompileOpts.tsNodeOpts.project=tests/tsconfig.json",
     "prepare": "husky install"
   },
