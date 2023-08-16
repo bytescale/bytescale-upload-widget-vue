@@ -38,7 +38,7 @@
 </p>
 <h1 align="center">
   Get Started —
-  <a href="https://codepen.io/upload-js/pen/yLpvYew?editors=1000">
+  <a href="https://codepen.io/bytescale/pen/yLpvYew?editors=1000">
     Try on CodePen
   </a>
 </h1>
@@ -83,7 +83,7 @@ Or via a `<script>` tag:
 
 Vue Uploader provides two options:
 
-### Option 1) File Upload Button — [Try on CodePen](https://codepen.io/upload-js/pen/yLpvYew?editors=1000)
+### Option 1) File Upload Button — [Try on CodePen](https://codepen.io/bytescale/pen/yLpvYew?editors=1000)
 
 Create a file upload button using the `openUploadModal` helper:
 
@@ -130,7 +130,7 @@ Create a file upload button using the `openUploadModal` helper:
 </script>
 ```
 
-### Option 2) Dropzone — [Try on CodePen](https://codepen.io/upload-js/pen/RwJvpKG?editors=1000)
+### Option 2) Dropzone — [Try on CodePen](https://codepen.io/bytescale/pen/RwJvpKG?editors=1000)
 
 Create a file upload dropzone using the `UploadDropzone` component:
 
