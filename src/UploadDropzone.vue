@@ -6,14 +6,13 @@
 </template>
 
 <script lang="ts">
-import { UploaderInterface, UploadWidgetConfig, UploadWidgetResult } from "uploader";
+import { UploadWidget, UploadWidgetConfig, UploadWidgetResult } from "@bytescale/upload-widget";
 import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
   name: "UploadDropzone",
   props: {
-    uploader: { type: Object as PropType<UploaderInterface>, required: true },
-    options: { type: Object as PropType<UploadWidgetConfig | undefined>, required: false },
+    options: { type: Object as PropType<UploadWidgetConfig>, required: true },
     onComplete: { type: Function as PropType<((files: UploadWidgetResult[]) => void) | undefined>, required: false },
     onUpdate: { type: Function as PropType<(files: UploadWidgetResult[]) => void> | undefined, required: false },
     height: { type: String, required: false },
@@ -28,12 +27,12 @@ export default defineComponent({
     }
   },
   mounted() {
-    if (this.uploader === undefined) {
-      throw new Error("[vue-uploader] You must provide the 'uploader' property to the 'UploadDropzone' component.");
+    if (this.options as any === undefined) {
+      throw new Error("[bytescale-upload-widget] You must provide the 'options' property to the 'UploadDropzone' component.");
     }
 
-    const onUpdateParams: UploadWidgetConfig = this.onUpdate === undefined ? {} : { onUpdate: this.onUpdate };
-    this.uploader
+    const onUpdateParams: Partial<UploadWidgetConfig> = this.onUpdate === undefined ? {} : { onUpdate: this.onUpdate };
+    UploadWidget
       .open({
         ...this.options,
         ...onUpdateParams,

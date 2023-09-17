@@ -18,8 +18,8 @@
     "outDir": "./dist",
     "baseUrl": "./src",
     "paths": {
-      "@upload-io/vue-uploader": ["./"],
-      "@upload-io/vue-uploader/*": ["./*"]
+      "@bytescale/upload-widget-vue": ["./"],
+      "@bytescale/upload-widget-vue/*": ["./*"]
     }
   },
   "include": ["./src/**/*"],

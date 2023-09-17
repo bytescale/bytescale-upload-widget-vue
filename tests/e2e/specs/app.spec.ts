@@ -1,6 +1,6 @@
 import App from "../pageobjects/app.page";
 
-describe("vue-uploader sandbox", () => {
+describe("upload-widget-vue sandbox", () => {
   it("should contain a dropzone component", async () => {
     await App.open();
     await expect(App.dropzoneUploadButton).toHaveText("Upload a File");

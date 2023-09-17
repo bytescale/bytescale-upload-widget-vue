@@ -56,7 +56,7 @@ jobs:
         env:
           SLACK_CHANNEL: deployments
           SLACK_COLOR: "#17BB5E"
-          SLACK_TITLE: "Built: vue-uploader :rocket:"
+          SLACK_TITLE: "Built: @bytescale/upload-widget-vue :rocket:"
           SLACK_FOOTER: "This package was successfully built."
           MSG_MINIMAL: true
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -67,7 +67,7 @@ jobs:
         env:
           SLACK_CHANNEL: deployments
           SLACK_COLOR: "#BB1717"
-          SLACK_TITLE: "Failed: vue-uploader :boom:"
+          SLACK_TITLE: "Failed: @bytescale/upload-widget-vue :boom:"
           SLACK_FOOTER: "No packages published."
           MSG_MINIMAL: true
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

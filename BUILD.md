@@ -1,6 +1,6 @@
 # Building From Source
 
-This repository contains a hot-reloading sandbox for developing the `@upload-io/vue-uploader` NPM package.
+This repository contains a hot-reloading sandbox for developing the `@bytescale/upload-widget-vue` NPM package.
 
 ## Prerequisites
 
@@ -16,8 +16,8 @@ This repository contains a hot-reloading sandbox for developing the `@upload-io/
 ### 1. Clone
 
 ```shell
-git clone git@github.com:bytescale/vue-uploader.git
-cd vue-uploader
+git clone git@github.com:bytescale/bytescale-upload-widget-vue.git
+cd bytescale-upload-widget-vue
 ```
 
 ### 2. Setup Environment
@@ -38,6 +38,6 @@ npm install
 npm start
 ```
 
-The above launches a **hot-reloading** server on `http://127.0.0.1:3040` that uses `@upload-io/vue-uploader` from source.
+The above launches a **hot-reloading** server on `http://127.0.0.1:3040` that uses `@bytescale/upload-widget-vue` from source.
 
 _Please ensure nothing else is running on TCP port `3040`_.

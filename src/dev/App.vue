@@ -1,19 +1,19 @@
 <template>
-  <h1>vue-uploader example</h1>
+  <h1>@bytescale/upload-widget-vue example</h1>
   <button id="uploadButton" @click="uploadFile">Upload a file...</button>
   <div id="dropzone">
-    <UploadDropzone :uploader="uploader" :options="options" :on-update="onDropzoneUpdate" />
+    <UploadDropzone :options="options" :on-update="onDropzoneUpdate" />
   </div>
 </template>
 
 <script lang="ts">
-import { openUploadModal } from "@upload-io/vue-uploader/OpenUploadModal";
-import { PreventableEvent } from "@upload-io/vue-uploader/PreventableEvent";
-import UploadDropzone from "@upload-io/vue-uploader/UploadDropzone.vue";
-import { Uploader, UploadWidgetConfig, UploadWidgetResult } from "uploader";
+import { openUploadModal } from "@bytescale/upload-widget-vue/OpenUploadModal";
+import { PreventableEvent } from "@bytescale/upload-widget-vue/PreventableEvent";
+import UploadDropzone from "@bytescale/upload-widget-vue/UploadDropzone.vue";
+import { UploadWidgetConfig, UploadWidgetResult } from "@bytescale/upload-widget";
 
-const uploader = Uploader({ apiKey: "free" });
 const options: UploadWidgetConfig = {
+  apiKey: "free",
   multi: true
 };
 
@@ -24,7 +24,6 @@ export default {
   },
   data() {
     return {
-      uploader,
       options
     };
   },
@@ -32,7 +31,6 @@ export default {
     uploadFile(event: PreventableEvent) {
       openUploadModal({
         event,
-        uploader,
         options,
         onComplete: (files: UploadWidgetResult[]): void => {
           if (files.length === 0) {

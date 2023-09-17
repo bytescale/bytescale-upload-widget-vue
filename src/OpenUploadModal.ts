@@ -1,21 +1,19 @@
-import { UploaderInterface, UploadWidgetConfig, UploadWidgetResult } from "uploader";
-import { PreventableEvent } from "@upload-io/vue-uploader/PreventableEvent";
+import { PreventableEvent } from "@bytescale/upload-widget-vue/PreventableEvent";
+import { UploadWidget, UploadWidgetConfig, UploadWidgetResult } from "@bytescale/upload-widget";
 
 export function openUploadModal({
   event,
-  uploader,
   options,
   onComplete
 }: {
   event?: PreventableEvent;
   onComplete?: (files: UploadWidgetResult[]) => void;
-  options?: UploadWidgetConfig;
-  uploader: UploaderInterface;
+  options: UploadWidgetConfig;
 }): void {
   if (event !== undefined) {
     event.preventDefault();
   }
-  uploader.open(options).then(
+  UploadWidget.open(options).then(
     files => {
       if (onComplete !== undefined) {
         onComplete(files);
