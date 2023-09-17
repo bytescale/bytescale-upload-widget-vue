@@ -19,7 +19,7 @@ module.exports = {
   plugins: [
     ...baseConfig.plugins,
     new HtmlWebpackPlugin({
-      title: "Uploader Demo",
+      title: "@bytescale/upload-widget-vue Demo",
       template: path.resolve(__dirname, "src/dev/index.html"),
       filename: "index.html" // output file
     })

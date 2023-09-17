@@ -19,6 +19,6 @@ export function openUploadModal({
         onComplete(files);
       }
     },
-    error => console.error("Uploader error.", error)
+    error => console.error("Bytescale Upload Widget error.", error)
   );
 }

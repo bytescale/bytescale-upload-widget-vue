@@ -45,7 +45,7 @@ export default defineComponent({
             this.onComplete(files);
           }
         },
-        error => console.error("Uploader error.", error)
+        error => console.error("Bytescale Upload Widget error.", error)
       );
   }
 });

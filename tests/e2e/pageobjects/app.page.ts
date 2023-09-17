@@ -17,11 +17,11 @@ class App {
   }
 
   get modal() {
-    return $(".uploader--with-modal");
+    return $(".upload-widget--with-modal");
   }
 
   get modalButton() {
-    return $(".uploader--with-modal .btn");
+    return $(".upload-widget--with-modal .btn");
   }
 
   /**
