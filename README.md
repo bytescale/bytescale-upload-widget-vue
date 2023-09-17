@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://www.bytescale.com/docs/upload-widget/vue">
-    <img alt="Bytescale Upload Widget for Vue" width="630" height="67" src="https://raw.githubusercontent.com/bytescale/bytescale-upload-widget-vue/main/.github/assets/bytescale-upload-widget-vue.svg">
+    <img alt="Bytescale Upload Widget for Vue" width="524" height="80" src="https://raw.githubusercontent.com/bytescale/bytescale-upload-widget-vue/main/.github/assets/bytescale-upload-widget-vue.svg">
   </a>
 </h1>
 <p align="center"><b>Beautiful File Upload Widget for Vue</b><br/> (With Built-in Cloud Storage)</p>
@@ -59,7 +59,6 @@
 
 <hr/>
 
-<br />
 <br />
 
 ## Installation
