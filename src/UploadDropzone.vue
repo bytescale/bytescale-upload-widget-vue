@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { UploadWidget, UploadWidgetConfig, UploadWidgetResult } from "@bytescale/upload-widget";
+import { UploadWidget, UploadWidgetConfig, UploadWidgetResult, UploadWidgetOnUpdateEvent } from "@bytescale/upload-widget";
 import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
@@ -14,7 +14,7 @@ export default defineComponent({
   props: {
     options: { type: Object as PropType<UploadWidgetConfig>, required: true },
     onComplete: { type: Function as PropType<((files: UploadWidgetResult[]) => void) | undefined>, required: false },
-    onUpdate: { type: Function as PropType<(files: UploadWidgetResult[]) => void> | undefined, required: false },
+    onUpdate: { type: Function as PropType<(event: UploadWidgetOnUpdateEvent) => void> | undefined, required: false },
     height: { type: String, required: false },
     width: { type: String, required: false }
   },
