@@ -132,20 +132,22 @@ Create a file upload dropzone using the `UploadDropzone` component:
 ```html
 <template>
   <UploadDropzone :options="options"
-                  :on-update="onFilesUploaded"
+                  :on-update="onFileListChanged"
+                  :on-complete="onFilesUploaded"
                   width="600px"
                   height="375px" />
 </template>
 
 <script lang="ts">
 import { UploadDropzone } from "@bytescale/upload-widget-vue";
-import type { UploadWidgetConfig, UploadWidgetOnUpdateEvent } from "@bytescale/upload-widget";
+import type { UploadWidgetConfig, UploadWidgetResult, UploadWidgetOnUpdateEvent } from "@bytescale/upload-widget";
 
 // Full Configuration:
 // https://www.bytescale.com/docs/upload-widget#configuration
 const options: UploadWidgetConfig = {
   apiKey: "free", // Get API keys from: www.bytescale.com
-  maxFileCount: 10
+  maxFileCount: 10,
+  showFinishButton: true
 };
 
 export default {
@@ -159,11 +161,15 @@ export default {
     };
   },
   methods: {
-    onFilesUploaded(event: UploadWidgetOnUpdateEvent) {
-      if (event.uploadedFiles.length === 0) {
+    onFileListChanged(event: UploadWidgetOnUpdateEvent) {
+      console.log("On update:");
+      console.log(JSON.stringify(event));
+    },
+    onFilesUploaded(files: UploadWidgetResult[]) {
+      if (files.length === 0) {
         alert("No files selected.");
       } else {
-        alert(event.uploadedFiles.map(f => f.fileUrl).join("\n"));
+        alert(files.map(f => f.fileUrl).join("\n"));
       }
     }
   }
