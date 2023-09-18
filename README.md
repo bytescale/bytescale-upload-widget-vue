@@ -132,14 +132,14 @@ Create a file upload dropzone using the `UploadDropzone` component:
 ```html
 <template>
   <UploadDropzone :options="options"
-                  :on-update="onFileUploaded"
+                  :on-update="onFilesUploaded"
                   width="600px"
                   height="375px" />
 </template>
 
 <script lang="ts">
 import { UploadDropzone } from "@bytescale/upload-widget-vue";
-import type { UploadWidgetConfig, UploadWidgetResult } from "@bytescale/upload-widget";
+import type { UploadWidgetConfig, UploadWidgetOnUpdateEvent } from "@bytescale/upload-widget";
 
 // Full Configuration:
 // https://www.bytescale.com/docs/upload-widget#configuration
@@ -159,11 +159,11 @@ export default {
     };
   },
   methods: {
-    onFileUploaded(files: UploadWidgetResult[]) {
-      if (files.length === 0) {
+    onFilesUploaded(event: UploadWidgetOnUpdateEvent) {
+      if (event.uploadedFiles.length === 0) {
         alert("No files selected.");
       } else {
-        alert(files.map(f => f.fileUrl).join("\n"));
+        alert(event.uploadedFiles.map(f => f.fileUrl).join("\n"));
       }
     }
   }
@@ -222,7 +222,10 @@ const options = {
     reset,                        // Resets the widget when called.
     updateConfig                  // Updates the widget's config by passing a new config
   }) => {},                       // object to the method's first parameter.
-  onUpdate: files => {},          // Called each time the list of uploaded files change.
+  onUpdate: (event) => {          // Called each time the Upload Widget's list of files change.
+    // event.pendingFiles         // Array of files that are either uploading or queued.
+    // event.uploadedFiles        // Array of files that have been uploaded and not removed.
+  },
   onPreUpload: async file => ({
     errorMessage: "Uh oh!",       // Displays this validation error to the user (if set).
     transformedFile: file         // Uploads 'transformedFile' instead of 'file' (if set).
