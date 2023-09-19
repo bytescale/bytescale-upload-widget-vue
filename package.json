@@ -1,19 +1,19 @@
 {
   "name": "@upload-io/vue-uploader",
-  "version": "3.37.0",
+  "version": "3.37.1",
   "author": "Bytescale <hello@bytescale.com> (https://www.bytescale.com)",
   "description": "Vue File Upload UI Widget — Lightweight & supports: drag and drop, multiple uploads, image cropping, customization & more 🚀 Comes with Cloud Storage 🌐",
   "license": "MIT",
   "main": "dist/main.js",
   "types": "dist/index.d.ts",
-  "homepage": "https://www.bytescale.com/docs/upload-widget/frameworks/vue",
+  "homepage": "https://www.bytescale.com/docs/upload-widget/vue",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bytescale/vue-uploader.git"
+    "url": "git+https://github.com/bytescale/bytescale-upload-widget-vue.git"
   },
   "bugs": {
-    "url": "https://github.com/bytescale/vue-uploader/issues"
+    "url": "https://github.com/bytescale/bytescale-upload-widget-vue/issues"
   },
   "files": [
     "/dist/**/*",

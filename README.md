@@ -1,7 +1,5 @@
 <h1 align="center">
-  <a href="https://www.bytescale.com/docs/upload-widget/frameworks/vue">
-    <img alt="Vue Uploader" width="264" height="106" src="https://raw.githubusercontent.com/bytescale/vue-uploader/main/.github/assets/logo.svg">
-  </a>
+  Migrated to: <a href="https://www.npmjs.com/package/@bytescale/upload-widget-vue">@bytescale/upload-widget-vue</a>
 </h1>
 <p align="center"><b>Vue File Upload Widget</b><br/> (With Integrated Cloud Storage)</p>
 <br/>
