@@ -132,8 +132,8 @@ Create a file upload dropzone using the `UploadDropzone` component:
 ```html
 <template>
   <UploadDropzone :options="options"
-                  :on-update="onFileListChanged"
                   :on-complete="onFilesUploaded"
+                  :on-update="onFileListChanged"
                   width="600px"
                   height="375px" />
 </template>
@@ -161,9 +161,9 @@ export default {
     };
   },
   methods: {
-    onFileListChanged(event: UploadWidgetOnUpdateEvent) {
-      console.log("On update:");
-      console.log(JSON.stringify(event));
+    onFileListChanged({ uploadedFiles, pendingFiles }: UploadWidgetOnUpdateEvent) {
+      const uploadedFileUrls = uploadedFiles.map(x => x.fileUrl).join("\n");
+      console.log(uploadedFileUrls);
     },
     onFilesUploaded(files: UploadWidgetResult[]) {
       if (files.length === 0) {
@@ -176,6 +176,11 @@ export default {
 };
 </script>
 ```
+
+> *Special behaviour for dropzones:*
+> `on-complete` only fires when `showFinishButton = true` (i.e. when the user clicks "Finish").
+> `on-update` must be used when `showFinishButton = false`.
+> Default value: `showFinishButton = false`
 
 ## Result
 
