@@ -177,9 +177,12 @@ export default {
 </script>
 ```
 
-> *Special behaviour for dropzones:*
+> **Special behaviour for dropzones:**
+>
 > `on-complete` only fires when `showFinishButton = true` (i.e. when the user clicks "Finish").
+>
 > `on-update` must be used when `showFinishButton = false`.
+>
 > Default value: `showFinishButton = false`
 
 ## Result
