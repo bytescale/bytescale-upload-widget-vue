@@ -179,7 +179,7 @@ export default {
 
 > **Special behaviour for dropzones:**
 >
-> `on-complete` only fires when `showFinishButton = true` (i.e. when the user clicks "Finish").
+> `on-complete` only fires if `showFinishButton = true` (when the user clicks "Finish").
 >
 > `on-update` must be used when `showFinishButton = false`.
 >
