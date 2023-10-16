@@ -75,7 +75,7 @@
     "vue": ">=3.0.0"
   },
   "dependencies": {
-    "@bytescale/upload-widget": "^4.13.0"
+    "@bytescale/upload-widget": "^4.14.0"
   },
   "devDependencies": {
     "@babel/cli": "7.17.6",
