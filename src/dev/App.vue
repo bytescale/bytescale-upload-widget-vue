@@ -10,7 +10,7 @@
 import { openUploadModal } from "@bytescale/upload-widget-vue/OpenUploadModal";
 import { PreventableEvent } from "@bytescale/upload-widget-vue/PreventableEvent";
 import UploadDropzone from "@bytescale/upload-widget-vue/UploadDropzone.vue";
-import { UploadWidgetConfig, UploadWidgetResult } from "@bytescale/upload-widget";
+import { UploadWidgetConfig, UploadWidgetOnUpdateEvent, UploadWidgetResult } from "@bytescale/upload-widget";
 
 const options: UploadWidgetConfig = {
   apiKey: "free",
@@ -40,14 +40,14 @@ export default {
             console.log(files.map(f => f.fileUrl));
           }
         }
-      })
+      });
     },
-    onDropzoneUpdate: (files: UploadWidgetResult[]): void => {
-      if (files.length === 0) {
+    onDropzoneUpdate: ({ uploadedFiles }: UploadWidgetOnUpdateEvent): void => {
+      if (uploadedFiles.length === 0) {
         console.log("No files selected in dropzone.");
       } else {
         console.log("Files uploaded in dropzone:");
-        console.log(files.map(f => f.fileUrl));
+        console.log(uploadedFiles.map(f => f.fileUrl));
       }
     }
   }
