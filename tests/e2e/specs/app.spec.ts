@@ -7,7 +7,7 @@ describe("upload-widget-vue sandbox", () => {
   });
   it("should contain a file upload button", async () => {
     await App.open();
-    await App.modalLauncher.click();
+    await (await App.modalLauncher).click();
     await expect(App.modalButton).toHaveText("Upload a File");
   });
 });

@@ -61,9 +61,6 @@
     "*/**/*.{js,jsx,ts,tsx}": [
       "eslint"
     ],
-    "*/**/*.{js,jsx,ts,tsx,test}": [
-      "bash -c \"npm run test\""
-    ],
     "src/**/*.{ts,tsx}": [
       "bash -c \"tsc --noEmit\""
     ],
