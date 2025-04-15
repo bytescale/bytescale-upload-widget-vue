@@ -20,8 +20,9 @@
     "paths": {
       "@bytescale/upload-widget-vue": ["./"],
       "@bytescale/upload-widget-vue/*": ["./*"]
-    }
+    },
+    "types": ["@wdio/globals/types", "@wdio/mocha-framework"]
   },
-  "include": ["./src/**/*"],
+  "include": ["./**/*"],
   "exclude": ["./node_modules/**/*"]
 }
