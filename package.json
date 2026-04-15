@@ -1,6 +1,6 @@
 {
   "name": "@bytescale/upload-widget-vue",
-  "version": "4.16.0",
+  "version": "4.17.0",
   "author": "Bytescale <hello@bytescale.com> (https://www.bytescale.com)",
   "description": "Vue File Upload UI Widget — Lightweight & supports: drag and drop, multiple uploads, image cropping, customization & more 🚀 Comes with Cloud Storage 🌐",
   "license": "MIT",
