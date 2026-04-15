@@ -1,5 +1,43 @@
+import { ChildProcess, spawn } from "node:child_process";
+import * as http from "node:http";
+import * as path from "node:path";
+
+const devServerPort = 3040;
+const devServerUrl = `http://127.0.0.1:${devServerPort}/`;
+const devServerStartupTimeoutMs = 30_000;
+
+let devServerProcess: ChildProcess | undefined;
+
+const isServerResponding = async (): Promise<boolean> =>
+  await new Promise(resolve => {
+    const request = http.get(devServerUrl, response => {
+      response.resume();
+      resolve(response.statusCode !== undefined && response.statusCode < 500);
+    });
+
+    request.on("error", () => resolve(false));
+    request.setTimeout(1_000, () => {
+      request.destroy();
+      resolve(false);
+    });
+  });
+
+const waitForDevServer = async (): Promise<void> => {
+  const deadline = Date.now() + devServerStartupTimeoutMs;
+
+  while (Date.now() < deadline) {
+    if (await isServerResponding()) {
+      return;
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 500));
+  }
+
+  throw new Error(`Timed out waiting for the dev server at ${devServerUrl}`);
+};
+
 export const config: WebdriverIO.Config = {
-  baseUrl: "http://localhost:3040",
+  baseUrl: devServerUrl,
 
   //
   // ====================
@@ -7,7 +45,7 @@ export const config: WebdriverIO.Config = {
   // ====================
   // WebdriverIO supports running e2e tests as well as unit and component tests.
   runner: "local",
-  tsConfigPath: "./test/tsconfig.json",
+  tsConfigPath: "./tsconfig.json",
 
   //
   // ==================
@@ -137,7 +175,7 @@ export const config: WebdriverIO.Config = {
   mochaOpts: {
     ui: "bdd",
     timeout: 60000
-  }
+  },
 
   //
   // =====
@@ -152,8 +190,34 @@ export const config: WebdriverIO.Config = {
    * @param {object} config wdio configuration object
    * @param {Array.<Object>} capabilities list of capabilities details
    */
-  // onPrepare: function (config, capabilities) {
-  // },
+  onPrepare: async function () {
+    if (await isServerResponding()) {
+      return;
+    }
+
+    devServerProcess = spawn(
+      process.execPath,
+      [
+        require.resolve("webpack-cli/bin/cli.js"),
+        "serve",
+        "--config",
+        path.resolve(__dirname, "webpack.config.dev.js"),
+        "--no-open"
+      ],
+      {
+        cwd: __dirname,
+        stdio: "inherit"
+      }
+    );
+
+    devServerProcess.on("exit", code => {
+      if (code !== 0) {
+        console.error(`webpack-dev-server exited with code ${String(code)}`);
+      }
+    });
+
+    await waitForDevServer();
+  },
   /**
    * Gets executed before a worker process is spawned and can be used to initialize specific service
    * for that worker as well as modify runtime environments in an async fashion.
@@ -276,8 +340,20 @@ export const config: WebdriverIO.Config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {<Object>} results object containing test results
    */
-  // onComplete: function(exitCode, config, capabilities, results) {
-  // },
+  onComplete: async function () {
+    const server = devServerProcess;
+
+    if (server === undefined) {
+      return;
+    }
+
+    await new Promise<void>(resolve => {
+      server.once("exit", () => resolve());
+      server.kill("SIGTERM");
+    });
+
+    devServerProcess = undefined;
+  }
   /**
    * Gets executed when a refresh happens.
    * @param {string} oldSessionId session ID of the old session

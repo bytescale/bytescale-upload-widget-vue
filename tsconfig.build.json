@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2017"
+    "target": "es2017",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
   },
   "extends": "./tsconfig.json",
   "include": ["./src/**/*", "./src/ts-libs/**/*"]
